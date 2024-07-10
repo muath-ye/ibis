@@ -7,10 +7,11 @@ use Mpdf\Mpdf;
 use SplFileInfo;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
-use League\CommonMark\Environment;
+use League\CommonMark\Environment\Environment;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Command\Command;
-use League\CommonMark\Block\Element\FencedCode;
+// use League\CommonMark\Block\Element\FencedCode;
+use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
@@ -110,10 +111,10 @@ class BuildCommand extends Command
     {
         $this->output->writeln('<fg=yellow>==></> Parsing Markdown ...');
 
-        $environment = Environment::createCommonMarkEnvironment();
+        $environment = (new Environment());
         $environment->addExtension(new TableExtension());
 
-        $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer([
+        $environment->addRenderer(FencedCode::class, new FencedCodeRenderer([
             'html', 'php', 'js', 'bash', 'json'
         ]));
 
