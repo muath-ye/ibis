@@ -10,7 +10,6 @@ use Mpdf\Config\ConfigVariables;
 use League\CommonMark\Environment\Environment;
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Console\Command\Command;
-// use League\CommonMark\Block\Element\FencedCode;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
